@@ -1,37 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import './../styles/App.css';
 
 const App = () => {
-  const [name, setName] = useState('');
-  const [greeting, setGreeting] = useState('');
+  const [name, setName] = useState(""); // State to store the user's name
+  const [greeting, setGreeting] = useState(""); // State to store the greeting message
 
-  const handleChange = (event) => {
-    setName(event.target.value, () => {
-      if (name.trim() !== '') {
-        setGreeting(`Hello, ${name}!`);
-      } else {
-        setGreeting('Please enter your name.');
-      }
-    });
+  // Function to handle input change
+  const handleInputChange = (event) => {
+    setName(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  // Function to handle form submission
+  const handleSubmit = () => {
+    if (name.trim() === "") {
+      // If the input is empty, show an error message
+      setGreeting("Please enter your name.");
+    } else {
+      // Otherwise, display the personalized greeting
+      setGreeting(`Hello, ${name}!`);
+    }
   };
 
   return (
     <div>
-      <h1>Personalized Greeting</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name:</label>
-        <input 
-          type="text" 
-          id="name" 
-          value={name} 
-          onChange={handleChange} 
-        />
-        <button type="submit">Submit</button>
-      </form>
-      <div data-testid="greeting">{greeting}</div> 
+      {/* Input field for the user's name */}
+      <input
+        type="text"
+        placeholder="Enter your name"
+        value={name}
+        onChange={handleInputChange}
+      />
+      
+      {/* Submit button */}
+      <button onClick={handleSubmit}>Submit</button>
+
+      {/* Display the greeting or error message */}
+      {greeting && <p>{greeting}</p>}
     </div>
   );
 };
