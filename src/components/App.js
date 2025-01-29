@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const App = () => {
   const [name, setName] = useState('');
   const [greeting, setGreeting] = useState('');
 
-  useEffect(() => {
-  if (name.trim() !== '') {
-    setGreeting(`Hello, ${name}!`);
-  } else {
-    setGreeting('Please enter your name.'); // Set greeting to 'Please enter your name.' when name is empty
-  }
-}, [name]);  // Only re-render when 'name' changes
+  const handleChange = (event) => {
+    const newName = event.target.value;
+    setName(newName);
+
+    if (newName.trim() !== '') {
+      setGreeting(`Hello, ${newName}!`);
+    } else {
+      setGreeting('Please enter your name.');
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,7 +28,7 @@ const App = () => {
           type="text" 
           id="name" 
           value={name} 
-          onChange={(e) => setName(e.target.value)} 
+          onChange={handleChange} 
         />
         <button type="submit">Submit</button>
       </form>
