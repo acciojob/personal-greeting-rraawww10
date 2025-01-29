@@ -5,14 +5,13 @@ const App = () => {
   const [greeting, setGreeting] = useState('');
 
   const handleChange = (event) => {
-    const newName = event.target.value;
-    setName(newName);
-
-    if (newName.trim() !== '') {
-      setGreeting(`Hello, ${newName}!`);
-    } else {
-      setGreeting('Please enter your name.');
-    }
+    setName(event.target.value, () => {
+      if (name.trim() !== '') {
+        setGreeting(`Hello, ${name}!`);
+      } else {
+        setGreeting('Please enter your name.');
+      }
+    });
   };
 
   const handleSubmit = (event) => {
