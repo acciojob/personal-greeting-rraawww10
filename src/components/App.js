@@ -17,7 +17,7 @@ const App = () => {
       setGreeting("Please enter your name.");
     } else {
       // Otherwise, display the personalized greeting
-      setGreeting(`Hello, ${name}!`);
+      setGreeting(`Hello ${name}!`);
     }
   };
 
@@ -29,13 +29,14 @@ const App = () => {
         placeholder="Enter your name"
         value={name}
         onChange={handleInputChange}
+        data-testid="name-input" // Add a test ID for testing
       />
       
       {/* Submit button */}
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleSubmit} data-testid="submit-button">Submit</button>
 
       {/* Display the greeting or error message */}
-      {greeting && <p>{greeting}</p>}
+      {greeting && <p data-testid="greeting-message">{greeting}</p>}
     </div>
   );
 };
