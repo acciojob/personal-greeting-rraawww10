@@ -3,22 +3,13 @@ import './../styles/App.css';
 
 const App = () => {
   const [name, setName] = useState("");
-  const [greeting, setGreeting] = useState("");
+ 
 
   const handleInputChange = (event) => {
     setName(event.target.value);
   };
 
- */ const handleSubmit = () => {
-    const trimmedName = name.trim();
-    if (trimmedName === "") {
-      setGreeting("Please enter your name.");
-    } else if (trimmedName === "n") {
-      setGreeting("Hello n!");
-    } else {
-      setGreeting(`Hello ${trimmedName}!`);
-    }
-  };*/
+
 
   return (
     <div>
@@ -32,7 +23,7 @@ const App = () => {
         data-testid="name-input"
       />
      
-      {name && <h1  data-testid="greeting-message">Hello ${name}!</h1>}
+      {name && <h1 data-testid="greeting-message">Hello ${name}!</h1>}
     </div>
   );
 };
