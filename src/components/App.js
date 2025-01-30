@@ -14,9 +14,7 @@ const App = () => {
     if (trimmedName === "") {
       setGreeting("Please enter your name.");
     } else {
-      setTimeout(() => {
-        setGreeting(`Hello ${trimmedName}!`);
-      }, 50); // Delay ensures state update before Cypress checks
+      setGreeting(`Hello ${trimmedName}!`);
     }
   };
 
