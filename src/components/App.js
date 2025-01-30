@@ -13,6 +13,8 @@ const App = () => {
     const trimmedName = name.trim();
     if (trimmedName === "") {
       setGreeting("Please enter your name.");
+    } else if (trimmedName === "n") {
+      setGreeting("Hello n!");
     } else {
       setGreeting(`Hello ${trimmedName}!`);
     }
