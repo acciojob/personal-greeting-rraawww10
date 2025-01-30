@@ -9,12 +9,12 @@ const App = () => {
     setName(event.target.value);
   };
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   const trimmedName = name.trim();
   if (trimmedName === "") {
-    setGreeting("Please enter your name.");
+    await setGreeting("Please enter your name.");
   } else {
-    setGreeting(`Hello ${trimmedName}!`);
+    await setGreeting(`Hello ${trimmedName}!`);
   }
 };
 
