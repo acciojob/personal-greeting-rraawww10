@@ -9,16 +9,15 @@ const App = () => {
     setName(event.target.value);
   };
 
-  const handleSubmit = () => {
-    const trimmedName = name.trim();
-    if (trimmedName === "") {
-      setGreeting("Please enter your name.");
-    } else if (trimmedName === "n") {
-      setGreeting("Hello n!");
-    } else {
-      setGreeting(`Hello ${trimmedName}!`);
-    }
-  };
+const handleSubmit = () => {
+  const trimmedName = name.trim();
+  if (trimmedName === "") {
+    setGreeting("Please enter your name.");
+  } else {
+    setGreeting(`Hello ${trimmedName}!`);
+  }
+};
+
 
   return (
     <div>
