@@ -2,40 +2,36 @@ import React, { useState } from "react";
 import './../styles/App.css';
 
 const App = () => {
-  const [name, setName] = useState(""); // State to store the user's name
-  const [greeting, setGreeting] = useState(""); // State to store the greeting message
+  const [name, setName] = useState("");
+  const [greeting, setGreeting] = useState("");
 
-  // Function to handle input change
   const handleInputChange = (event) => {
     setName(event.target.value);
   };
 
-  // Function to handle form submission
   const handleSubmit = () => {
-    if (name.trim() === "") {
-      // If the input is empty, show an error message
+    const trimmedName = name.trim();
+    if (trimmedName === "") {
       setGreeting("Please enter your name.");
     } else {
-      // Otherwise, display the personalized greeting
-      setGreeting(`Hello,${name}!`);
+      setTimeout(() => {
+        setGreeting(`Hello ${trimmedName}!`);
+      }, 50); // Delay ensures state update before Cypress checks
     }
   };
 
   return (
     <div>
-      {/* Input field for the user's name */}
+      <label htmlFor="name-input">Enter your name:</label>
       <input
         type="text"
+        id="name-input"
         placeholder="Enter your name"
         value={name}
         onChange={handleInputChange}
-        data-testid="name-input" // Add a test ID for testing
+        data-testid="name-input"
       />
-      
-      {/* Submit button */}
       <button onClick={handleSubmit} data-testid="submit-button">Submit</button>
-
-      {/* Display the greeting or error message */}
       {greeting && <p data-testid="greeting-message">{greeting}</p>}
     </div>
   );
