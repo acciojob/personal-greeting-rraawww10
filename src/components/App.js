@@ -9,7 +9,7 @@ const App = () => {
     setName(event.target.value);
   };
 
-  const handleSubmit = () => {
+ */ const handleSubmit = () => {
     const trimmedName = name.trim();
     if (trimmedName === "") {
       setGreeting("Please enter your name.");
@@ -18,7 +18,7 @@ const App = () => {
     } else {
       setGreeting(`Hello ${trimmedName}!`);
     }
-  };
+  };*/
 
   return (
     <div>
@@ -31,8 +31,8 @@ const App = () => {
         onChange={handleInputChange}
         data-testid="name-input"
       />
-      <button onClick={handleSubmit} data-testid="submit-button">Submit</button>
-      {greeting && <p data-testid="greeting-message">{greeting}</p>}
+     
+      {name && <h1  data-testid="greeting-message">Hello ${name}!</h1>}
     </div>
   );
 };
