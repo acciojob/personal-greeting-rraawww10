@@ -1,31 +1,26 @@
-import React, { useState } from "react";
+
+import React from "react";
 import './../styles/App.css';
+import {useState} from "react";
 
 const App = () => {
-  const [name, setName] = useState("");
- 
-
-  const handleInputChange = (event) => {
-    setName(event.target.value);
-  };
-
-
-
+   const [text, setText ] = useState("");
+    const getVal = (e) => {
+       const {value} = e.target;
+       setText(value);
+    }
+   const clear = () => {
+      setText("");
+   }
   return (
     <div>
-      <label htmlFor="name-input">Enter your name:</label>
-      <input
-        type="text"
-        id="name-input"
-        placeholder="Enter your name"
-        value={name}
-        onChange={handleInputChange}
-        data-testid="name-input"
-      />
-     
-      {name && <h1 data-testid="greeting-message">Hello ${name}!</h1>}
+        {/* Do not remove the main div */}
+      <p>Enter your name:</p>
+      <input type="text" id="text" onInput={getVal} value={text}/>
+      {!!text.length && <p>Hello {text}!</p>}
+      <button onClick={clear}>clear</button>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
