@@ -17,7 +17,7 @@ const App = () => {
       setGreeting("Please enter your name.");
     } else {
       // Otherwise, display the personalized greeting
-      setGreeting(`Hello ${name}!`);
+      setGreeting(`Hello,${name}!`);
     }
   };
 
